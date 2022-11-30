@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 
 import './App.css';
-import TodoTable from "./components/TodoTable";
-import NewTodoForm from "./components/NewTodoForm";
+import {TodoTable} from "./components/TodoTable";
+import {NewTodoForm} from "./components/NewTodoForm";
 
-function App() {
+export const App = () => {
 
     const [showAddTodoForm, setShowAddTodoForm] = useState(false);
 
@@ -33,7 +33,7 @@ function App() {
     ])
 
     // this is for our onclick event
-    const addTodo = (description, assigned) => {
+    const addTodo = (description: string, assigned: string) => {
         let rowNumber = 0;
         if (todos.length > 0) {
             rowNumber = todos[todos.length - 1].rowNumber + 1;
@@ -51,7 +51,7 @@ function App() {
     }
 
     // delete todo function
-    const deleteTodo = (deleteTodoRowNumber) => {
+    const deleteTodo = (deleteTodoRowNumber: number) => {
         // this is from our useState hook, this is how we update the state and add the new items
         let filtered = todos.filter(todo => todo.rowNumber !== deleteTodoRowNumber)
         setTodos(filtered)
@@ -77,4 +77,4 @@ function App() {
     );
 }
 
-export default App;
+

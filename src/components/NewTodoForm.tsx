@@ -1,23 +1,23 @@
-import {useState} from "react";
+import React, {useState} from "react";
 
-function NewTodoForm(props) {
+export const NewTodoForm: React.FC<{ addTodo: Function }> = (props) => {
 
     const [description, setDescription] = useState("");
     const [assigned, setAssigned] = useState("");
 
 
     // OnChange Handlers
-    const descriptionChange = (event) => {
+    const descriptionChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
         setDescription(event.target.value);
     }
-    const assignedChange = (event) => {
+    const assignedChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
         setAssigned(event.target.value);
     }
 
-    const submitTodo = (event) => {
+    const submitTodo = () => {
         // if there both not empty
         if (description !== "" && assigned !== "") {
-            // call the addTodo function from App.js
+            // call the addTodo function from App.tsx
             props.addTodo(description, assigned);
             // clear the input fields
             setDescription("");
@@ -47,4 +47,3 @@ function NewTodoForm(props) {
 
 }
 
-export default NewTodoForm;
